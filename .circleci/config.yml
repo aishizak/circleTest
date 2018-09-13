@@ -2,7 +2,8 @@ version: 2
 jobs:
   build:
     docker:
-      - image: debian:stretch
+      - image: circleci/python:3.6.5
+    working_directory: ~/repo1
     steps:
       - checkout
       - run:
@@ -20,20 +21,3 @@ jobs:
           command: |
             cd ansible/
             pwd
-  deploy:
-    working_directory: ~/repo1
-    branch: master
-    docker:
-      - image: circleci/python:3.6.5
-    steps:
-      - checkout
-      - run:
-          name: Install ansible
-          command: |
-            sudo pip install ansible
-      - run:
-          name: Deploy source to local
-          command: |
-            cd ansible/
-            pwd
-          
