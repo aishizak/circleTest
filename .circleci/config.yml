@@ -11,6 +11,15 @@ jobs:
       - run:
           name: Print the Current Time
           command: date
+      - run:
+          name: Install ansible
+          command: |
+            sudo pip install ansible
+      - run:
+          name: Deploy source to local
+          command: |
+            cd ansible/
+            pwd
   deploy:
     working_directory: ~/repo1
     branch: master
