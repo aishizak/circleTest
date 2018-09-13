@@ -11,3 +11,19 @@ jobs:
       - run:
           name: Print the Current Time
           command: date
+  deploy:
+    working_directory: ~/repo1
+    docker:
+      - image: circleci/python:3.6.5
+    steps:
+      - checkout
+      - run:
+          name: Install ansible
+          command: |
+            sudo pip install ansible
+      - run:
+          name: Deploy source to local
+          command: |
+            cd ansible/
+            pwd
+          
